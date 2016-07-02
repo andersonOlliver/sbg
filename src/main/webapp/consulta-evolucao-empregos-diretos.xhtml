@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+   
+    <f:metadata>
+        <f:viewAction action="#{consultaEvolucaoEmpregosDiretoBean.consultar}" />
+    </f:metadata>
+
+    <ui:define name="titulo">SBG - Governo</ui:define>
+
+    <ui:define name="corpo">
+
+        <h1>SBG - Governo</h1>
+
+        <h:form id="frm">
+            <p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+            <!--TODOS OS CODIGOS AQUI!-->
+            <p:dataTable value="#{consultaEvolucaoEmpregosDiretoBean.dados}" var="item">
+            
+                <p:column headerText="2011">
+                    <h:outputText value="#{item.evolEmpregdireto2011}" />
+                </p:column>
+                <p:column headerText="2012">
+                    <h:outputText value="#{item.evolEmpregdireto2012}" />
+                </p:column>
+                <p:column headerText="2013">
+                    <h:outputText value="#{item.evolEmpregdireto2013}" />
+                </p:column>
+                
+                <p:column headerText="2014">
+                    <h:outputText value="#{item.evolEmpregdireto2014}" />
+                </p:column>
+                
+                <p:column headerText="2015">
+                    <h:outputText value="#{item.evolEmpregdireto2015}" />
+                </p:column>
+
+                <p:column headerText="2016">
+                    <h:outputText value="#{item.evolEmpregdireto2016}" />
+                </p:column>
+            
+                <p:column headerText="Dados Governo">
+                    <h:outputText value="#{item.dadosGoverno.municipio}" />
+                </p:column>
+            
+            </p:dataTable>
+           
+        </h:form>
+    </ui:define>
+</ui:composition>

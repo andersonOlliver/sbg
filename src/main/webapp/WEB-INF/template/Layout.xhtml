@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="titulo">Sistema Financeiro</ui:insert></title>
+        <h:outputStylesheet library="supermt" name="estilo.css" />
+    </h:head>
+
+    <h:body>
+
+
+        <p:ajaxStatus styleClass="ajax-status">
+            <f:facet name="start">
+                <h:graphicImage library="supermt" name="loading.gif" />
+            </f:facet>
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+
+        <header>
+            <!-- 
+            <h:graphicImage library="supermt" name="logo.png" />
+            -->
+            <div style="float: right; margin-right: 20px; margin-top: 8px">
+                Olá Usuario!</div>
+        </header>
+
+        <h:form>
+            <p:menubar rendered="true" style="margin-top: -20px; margin-bottom: 20px">
+                <p:menuitem value="Início" action="index?faces-redirect=true" icon="fa fa-fw fa-home" style="padding-left: 10px"/>
+                <p:submenu label="Sistema" style="padding-left: 10px">
+                    <p:menuitem value="Importar Dados" action="importa-dados?faces-redirect=true" />
+                </p:submenu>
+                
+                <!-- <p:submenu label="Sistema">
+                        <p:menuitem value="Sair" action="#{loginBean.logout}" />
+                </p:submenu> -->
+            </p:menubar>
+        </h:form>
+
+        <div id="conteudo">
+            <ui:insert name="corpo" />
+        </div>
+
+        <footer style="float: bottom"> SBG - SuperMT - Governo </footer>
+    </h:body>
+
+</html>

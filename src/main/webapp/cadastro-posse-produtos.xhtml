@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+   
+    <f:metadata>
+        <f:viewAction action="#{cadastroPosseDeProdutosBean.prepararCadastro()}" />
+    </f:metadata>
+
+    <ui:define name="titulo">SBG - Governo</ui:define>
+
+    <ui:define name="corpo">
+
+        <h1>SBG - Governo</h1>
+
+        <h:form id="frm">
+            <p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+            <!--TODOS OS CODIGOS AQUI!-->
+
+            <p:panelGrid columns="2" id="grid">
+
+                <p:outputLabel value="Porte" for="porte" />
+                <p:inputText id="porte" 
+                             value="#{cadastroPosseDeProdutosBean.dado.porte}" />
+
+                <p:outputLabel value="Classificação" for="classificacao" />
+                <p:inputText id="classificacao" 
+                             value="#{cadastroPosseDeProdutosBean.dado.classificacao}" />
+
+                <p:outputLabel value="ROA" for="roa" />
+                <p:inputText id="roa" 
+                             value="#{cadastroPosseDeProdutosBean.dado.roa}" />
+
+                <p:outputLabel value="FUNDEB" for="fundeb" />
+                <p:inputText id="fundeb" 
+                             value="#{cadastroPosseDeProdutosBean.dado.fundeb}" />
+
+                <p:outputLabel value="FPM" for="fpm" />
+                <p:inputText id="fpm" 
+                             value="#{cadastroPosseDeProdutosBean.dado.fpm}" />
+
+                <p:outputLabel value="Munícipes" for="municipes" />
+                <p:inputText id="municipes" 
+                             value="#{cadastroPosseDeProdutosBean.dado.municipes}" />
+
+                <p:outputLabel value="Servidores" for="servidores" />
+                <p:inputText id="servidores" 
+                             value="#{cadastroPosseDeProdutosBean.dado.servidores}" />
+                
+                <p:outputLabel value="aasp" for="aasp" />
+                <p:inputText id="aasp" 
+                             value="#{cadastroPosseDeProdutosBean.dado.aasp}" />
+
+
+                <p:outputLabel value="Aplicações" for="aplicacoes" />
+                <p:inputText id="aplicacoes" 
+                             value="#{cadastroPosseDeProdutosBean.dado.aplicacoes}" />
+
+                <p:outputLabel value="Responsabilidades" for="responsabilidades" />
+                <p:inputText id="responsabilidades" 
+                             value="#{cadastroPosseDeProdutosBean.dado.responsabilidades}" />
+
+                <p:outputLabel value="REC" for="rec" />
+                <p:inputText id="rec" 
+                             value="#{cadastroPosseDeProdutosBean.dado.rec}" />
+
+                <p:outputLabel value="DBT" for="dbt" />
+                <p:inputText id="dbt" 
+                             value="#{cadastroPosseDeProdutosBean.dado.dbt}" />
+
+                <p:outputLabel value="CTU" for="ctu" />
+                <p:inputText id="ctu" 
+                             value="#{cadastroPosseDeProdutosBean.dado.ctu}" />
+
+                <p:outputLabel value="CPB" for="cpb" />
+                <p:inputText id="cpb" 
+                             value="#{cadastroPosseDeProdutosBean.dado.cpb}" />
+
+                <p:outputLabel value="CBR" for="cbr" />
+                <p:inputText id="cbr" 
+                             value="#{cadastroPosseDeProdutosBean.dado.cbr}" />
+
+                <p:outputLabel value="OBN" for="obn" />
+                <p:inputText id="obn" 
+                             value="#{cadastroPosseDeProdutosBean.dado.obn}" />
+
+                <p:outputLabel value="PAG" for="pag" />
+                <p:inputText id="pag" 
+                             value="#{cadastroPosseDeProdutosBean.dado.pag}" />
+
+                <p:outputLabel value="Contracheque" for="contracheque" />
+                <p:inputText id="contracheque" 
+                             value="#{cadastroPosseDeProdutosBean.dado.contracheque}" />
+
+                <p:outputLabel value="Licitacoese" for="licitacoese" />
+                <p:inputText id="licitacoese" 
+                             value="#{cadastroPosseDeProdutosBean.dado.licitacoese}" />
+
+                <p:outputLabel value="RECAD" for="recad" />
+                <p:inputText id="recad" 
+                             value="#{cadastroPosseDeProdutosBean.dado.recad}" />
+
+                <p:outputLabel value="fopagnoBB" for="fopagnoBB" />
+                <p:inputText id="fopagnoBB" 
+                             value="#{cadastroPosseDeProdutosBean.dado.fopagnoBB}" />
+
+                <p:outputLabel value="pasepFopag" for="pasepFopag" />
+                <p:inputText id="pasepFopag" 
+                             value="#{cadastroPosseDeProdutosBean.dado.pasepFopag}" />
+
+                <p:outputLabel value="rpps" for="rpps" />
+                <p:inputText id="rpps" 
+                             value="#{cadastroPosseDeProdutosBean.dado.rpps}" />
+
+                <p:outputLabel value="BBCreditoSalario" for="BBCreditoSalario" />
+                <p:inputText id="BBCreditoSalario" 
+                             value="#{cadastroPosseDeProdutosBean.dado.BBCreditoSalario}" />
+
+                <p:outputLabel value="Bb Credito Consignacao" for="bbCreditoConsignacao" />
+                <p:inputText id="bbCreditoConsignacao" 
+                             value="#{cadastroPosseDeProdutosBean.dado.BBCreditoConsignacao}" />
+
+                <p:outputLabel value="BB Credito Décimo Terceiro Salario" for="BBCreditoDecimoTerceiroSalario" />
+                <p:inputText id="BBCreditoDecimoTerceiroSalario" 
+                             value="#{cadastroPosseDeProdutosBean.dado.BBCreditoDecimoTerceiroSalario}" />
+
+                <p:outputLabel value="Limite de Crédito" for="limitedeCredito" />
+                <p:inputText id="limitedeCredito" 
+                             value="#{cadastroPosseDeProdutosBean.dado.limitedeCredito}" />
+
+                <p:outputLabel value="Limite Estabelecido" for="limiteEstabelecido" />
+                <p:inputText id="limiteEstabelecido" 
+                             value="#{cadastroPosseDeProdutosBean.dado.limiteEstabelecido}" />
+
+                <p:outputLabel value="Risco Atribuido" for="riscoAtribuido" />
+                <p:inputText id="riscoAtribuido" 
+                             value="#{cadastroPosseDeProdutosBean.dado.riscoAtribuido}" />
+
+                <p:outputLabel value="MCD" for="mcd" />
+                <p:inputText id="mcd" 
+                             value="#{cadastroPosseDeProdutosBean.dado.mcd}" />
+
+                <p:outputLabel value="MCR" for="mcr" />
+                <p:inputText id="mcr" 
+                             value="#{cadastroPosseDeProdutosBean.dado.mcr}" />
+
+                <p:outputLabel value="" for="prefixo" />
+                <p:inputText id="prefixo" 
+                             value="#{cadastroPosseDeProdutosBean.dado.MCFundos}" />
+
+                <p:outputLabel value="Mês" for="mes" />
+                <p:inputText id="mes" 
+                             value="#{cadastroPosseDeProdutosBean.dado.mes}" />
+
+                <p:outputLabel value="Ano" for="ano" />
+                <p:inputText id="ano" 
+                             value="#{cadastroPosseDeProdutosBean.dado.ano}" />
+                
+                <p:outputLabel value="Carteira" for="carteira" />
+                <p:inputText id="carteira" 
+                             value="#{cadastroPosseDeProdutosBean.dado.carteira}" />
+               
+                <p:outputLabel value="GECON" for="gecon" />
+                <p:inputText id="gecon" 
+                             value="#{cadastroPosseDeProdutosBean.dado.gecon}" />
+                
+                <p:outputLabel value="Dados Governo" for="dados_governo" />
+                <p:selectOneMenu id="dados_governo" value="#{cadastroPosseDeProdutosBean.dado.dadosGoverno}"
+                                 converter="omnifaces.SelectItemsConverter">
+                    <f:selectItem itemLabel="-- Selecione --" />
+                    <f:selectItems value="#{cadastroPosseDeProdutosBean.dadosGoverno}" var="item"
+                                   itemLabel="#{item.cnpj} - #{item.nome}"/>
+                </p:selectOneMenu>
+                                          
+
+                <h:outputLabel />
+                <p:commandButton value="Salvar"
+                                 action="#{cadastroPosseDeProdutosBean.salvar}" icon="ui-icon-disk"
+                                 update="@form" />
+
+            </p:panelGrid>
+           
+        </h:form>
+    </ui:define>
+</ui:composition>

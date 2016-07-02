@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+   
+    <f:metadata>
+        <f:viewAction action="#{cadastroDadosGovernoBean.prepararCadastro()}" />
+    </f:metadata>
+
+    <ui:define name="titulo">SBG - Governo</ui:define>
+
+    <ui:define name="corpo">
+
+        <h1>SBG - Governo</h1>
+
+        <h:form id="frm">
+            <p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+            <!--TODOS OS CODIGOS AQUI!-->
+
+            <p:panelGrid columns="2" id="grid">
+
+                <p:outputLabel value="Prefixo" for="prefixo" />
+                <p:inputText id="prefixo" 
+                             value="#{cadastroDadosGovernoBean.dadosGoverno.prefixo}" />
+
+                <p:outputLabel value="Nome: " for="nome" />
+                <p:inputText id="nome" 
+                             value="#{cadastroDadosGovernoBean.dadosGoverno.nome}" />
+
+                
+                <p:outputLabel value="Município" for="municipio" />
+                <p:inputText id="municipio" 
+                             value="#{cadastroDadosGovernoBean.dadosGoverno.municipio}" />
+                
+                <p:outputLabel value="Mci" for="mci" />
+                <p:inputText id="mci" 
+                             value="#{cadastroDadosGovernoBean.dadosGoverno.mci}" />
+
+                
+                <p:outputLabel value="Gerev" for="gerev" />
+                <p:inputText id="gerev" 
+                             value="#{cadastroDadosGovernoBean.dadosGoverno.gerev}" />
+
+                
+                <p:outputLabel value="CNPJ" for="cnpj" />
+                <p:inputText id="cnpj" 
+                             value="#{cadastroDadosGovernoBean.dadosGoverno.cnpj}" />
+
+                
+                <p:outputLabel value="Agencia Relacionamento" for="agenciaRelacionamento" />
+                <p:inputText id="agenciaRelacionamento" 
+                             value="#{cadastroDadosGovernoBean.dadosGoverno.agenciaRelacionamento}" />
+
+                
+
+
+
+                <h:outputLabel />
+                <p:commandButton value="Salvar"
+                                 action="#{cadastroDadosGovernoBean.salvar}" icon="ui-icon-disk"
+                                 update="@form" />
+
+            </p:panelGrid>
+           
+        </h:form>
+    </ui:define>
+</ui:composition>
