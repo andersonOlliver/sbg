@@ -22,8 +22,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Olliver
  */
 @Entity
-@Table(name = "tabelaifdm2013")
-public class Ifdm implements Serializable {
+@Table(name = "tabelasitesprefeituras")
+public class SitesPrefeituras implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -35,23 +35,14 @@ public class Ifdm implements Serializable {
     @Size(max = 255)
     @Column(name = "Municipio")
     private String municipio;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "IFDM")
-    private Double ifdm;
-    @Column(name = "RankingIFDMNacional")
-    private Double rankingIFDMNacional;
-    @Column(name = "RankingIFDMEstadual")
-    private Double rankingIFDMEstadual;
-    @Size(max = 50)
-    @Column(name = "Fonte")
-    private String fonte;
-    @Column(name = "DataFonte")
-    private Integer dataFonte;
+    @Size(max = 255)
+    @Column(name = "Site")
+    private String site;
 
-    public Ifdm() {
+    public SitesPrefeituras() {
     }
 
-    public Ifdm(String codigoIBGE) {
+    public SitesPrefeituras(String codigoIBGE) {
         this.codigoIBGE = codigoIBGE;
     }
 
@@ -71,44 +62,12 @@ public class Ifdm implements Serializable {
         this.municipio = municipio;
     }
 
-    public Double getIfdm() {
-        return ifdm;
+    public String getSite() {
+        return site;
     }
 
-    public void setIfdm(Double ifdm) {
-        this.ifdm = ifdm;
-    }
-
-    public Double getRankingIFDMNacional() {
-        return rankingIFDMNacional;
-    }
-
-    public void setRankingIFDMNacional(Double rankingIFDMNacional) {
-        this.rankingIFDMNacional = rankingIFDMNacional;
-    }
-
-    public Double getRankingIFDMEstadual() {
-        return rankingIFDMEstadual;
-    }
-
-    public void setRankingIFDMEstadual(Double rankingIFDMEstadual) {
-        this.rankingIFDMEstadual = rankingIFDMEstadual;
-    }
-
-    public String getFonte() {
-        return fonte;
-    }
-
-    public void setFonte(String fonte) {
-        this.fonte = fonte;
-    }
-
-    public Integer getDataFonte() {
-        return dataFonte;
-    }
-
-    public void setDataFonte(Integer dataFonte) {
-        this.dataFonte = dataFonte;
+    public void setSite(String site) {
+        this.site = site;
     }
 
     @Override
@@ -121,10 +80,10 @@ public class Ifdm implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Ifdm)) {
+        if (!(object instanceof SitesPrefeituras)) {
             return false;
         }
-        Ifdm other = (Ifdm) object;
+        SitesPrefeituras other = (SitesPrefeituras) object;
         if ((this.codigoIBGE == null && other.codigoIBGE != null) || (this.codigoIBGE != null && !this.codigoIBGE.equals(other.codigoIBGE))) {
             return false;
         }
@@ -133,7 +92,7 @@ public class Ifdm implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.bb.intranet.supermt.governo.superbase.entidades.Tabelaifdm2013[ codigoIBGE=" + codigoIBGE + " ]";
+        return "br.com.bb.intranet.supermt.governo.superbase.entidades.Tabelasitesprefeituras[ codigoIBGE=" + codigoIBGE + " ]";
     }
     
 }

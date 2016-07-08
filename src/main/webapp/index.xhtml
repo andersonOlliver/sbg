@@ -4,26 +4,38 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:pe="http://primefaces.org/ui/extensions">
+                xmlns:p="http://primefaces.org/ui">
 
-   
+
     <f:metadata>
-        <!--<f:viewAction action="#{consultaDesembolsoSuperBean.consultar}" />-->
+        <f:viewAction action="#{inicioBean.consultar}" />
     </f:metadata>
 
     <ui:define name="titulo">SBG - Governo</ui:define>
 
     <ui:define name="corpo">
 
-        <h1>SBG - Governo</h1>
+        <!--<h1>SBG - Governo</h1>-->
 
-        <h:form id="frm">
+        <h:form id="frm" style="min-width: 400px">
             <p:messages showDetail="false" showSummary="true" autoUpdate="true" />
 
             <!--TODOS OS CODIGOS AQUI!-->
 
-           
+            <h:panelGrid columns="2" cellpadding="5" class="buscador">
+
+                <h:outputText value="Busque a cidade: " style="margin-left: 20%; font-size: 1.8em"/> 
+                <h:outputLabel />
+                <p:autoComplete id="ac_busca" value="#{inicioBean.nomePrefeitura}" completeMethod="#{inicioBean.pesquisarMunicipio}"
+                                dropdown="true" forceSelection="true" scrollHeight="100" size="45">
+                    <p:ajax event="itemSelect" listener="#{inicioBean.direcionar(inicioBean.nomePrefeitura)}" />
+                </p:autoComplete>
+
+                <!--<p:commandButton value="Buscar" action="#{inicioBean.direcionar(inicioBean.nomePrefeitura)}" />-->
+
+            </h:panelGrid>
+
+
         </h:form>
     </ui:define>
 </ui:composition>

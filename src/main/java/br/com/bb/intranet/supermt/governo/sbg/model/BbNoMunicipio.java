@@ -1,76 +1,73 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.bb.intranet.supermt.governo.sbg.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Objects;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Olliver
- *
  */
 @Entity
 @Table(name = "bb_no_municipio")
 public class BbNoMunicipio implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @Id
-    @GeneratedValue
-    private Long id;
-
-    @Size(max = 255)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "CodigoIBGE")
     private String codigoIBGE;
+    @Size(max = 255)
+    @Column(name = "Municipio")
+    private String municipio;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "FIESQtd")
+    private Double fIESQtd;
+    @Column(name = "FIESVol")
+    private Double fIESVol;
+    @Column(name = "MPOQuant")
+    private Double mPOQuant;
+    @Column(name = "MPOVol")
+    private Double mPOVol;
+    @Column(name = "AcessibilidadeQtd")
+    private Double acessibilidadeQtd;
+    @Column(name = "AcessibilidadeVol")
+    private Double acessibilidadeVol;
+    @Column(name = "CreditoaAgriculturaEmpres")
+    private Double creditoaAgriculturaEmpres;
+    @Column(name = "CreditoaAgriculturaFamiliar")
+    private Double creditoaAgriculturaFamiliar;
+    @Column(name = "CreditoBacenVolume")
+    private Double creditoBacenVolume;
+    @Column(name = "CreditoBacenShare")
+    private Double creditoBacenShare;
+    @Size(max = 50)
+    @Column(name = "Fonte")
+    private String fonte;
+    @Size(max = 50)
+    @Column(name = "DataFonte")
+    private String dataFonte;
 
-    @Column(precision = 20, scale = 2)
-    private BigDecimal quantidadeFIES;
-
-    @Column(precision = 20, scale = 2)
-    private BigDecimal volumeFIES;
-
-    @Column(precision = 20, scale = 2)
-    private BigDecimal quantidadeMPO;
-
-    @Column(precision = 20, scale = 2)
-    private BigDecimal volumeMPO;
-
-    @Column(precision = 20, scale = 2)
-    private BigDecimal acessibilidadeQtd;
-
-    @Column(precision = 20, scale = 2)
-    private BigDecimal acessibilidadeVol;
-
-    @Column(precision = 20, scale = 2)
-    private BigDecimal creditoAgriculturaEmpres;
-
-    @Column(precision = 20, scale = 2)
-    private BigDecimal creditoAgriculturaFamiliar;
-
-    @Column(precision = 20, scale = 2)
-    private BigDecimal creditoBacenVolume;
-
-    @Column(precision = 20, scale = 2)
-    private BigDecimal creditoBacenShare;
-    
-    @ManyToOne
-    @JoinColumn(name = "dados_governo")
-    private DadosGoverno dadosGoverno;
-
-    public Long getId() {
-        return id;
+    public BbNoMunicipio() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public BbNoMunicipio(String codigoIBGE) {
+        this.codigoIBGE = codigoIBGE;
     }
 
     public String getCodigoIBGE() {
@@ -81,118 +78,133 @@ public class BbNoMunicipio implements Serializable {
         this.codigoIBGE = codigoIBGE;
     }
 
-    public BigDecimal getQuantidadeFIES() {
-        return quantidadeFIES;
+    public String getMunicipio() {
+        return municipio;
     }
 
-    public void setQuantidadeFIES(BigDecimal quantidadeFIES) {
-        this.quantidadeFIES = quantidadeFIES;
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
     }
 
-    public BigDecimal getVolumeFIES() {
-        return volumeFIES;
+    public Double getFIESQtd() {
+        return fIESQtd;
     }
 
-    public void setVolumeFIES(BigDecimal volumeFIES) {
-        this.volumeFIES = volumeFIES;
+    public void setFIESQtd(Double fIESQtd) {
+        this.fIESQtd = fIESQtd;
     }
 
-    public BigDecimal getQuantidadeMPO() {
-        return quantidadeMPO;
+    public Double getFIESVol() {
+        return fIESVol;
     }
 
-    public void setQuantidadeMPO(BigDecimal quantidadeMPO) {
-        this.quantidadeMPO = quantidadeMPO;
+    public void setFIESVol(Double fIESVol) {
+        this.fIESVol = fIESVol;
     }
 
-    public BigDecimal getVolumeMPO() {
-        return volumeMPO;
+    public Double getMPOQuant() {
+        return mPOQuant;
     }
 
-    public void setVolumeMPO(BigDecimal volumeMPO) {
-        this.volumeMPO = volumeMPO;
+    public void setMPOQuant(Double mPOQuant) {
+        this.mPOQuant = mPOQuant;
     }
 
-    public BigDecimal getAcessibilidadeQtd() {
+    public Double getMPOVol() {
+        return mPOVol;
+    }
+
+    public void setMPOVol(Double mPOVol) {
+        this.mPOVol = mPOVol;
+    }
+
+    public Double getAcessibilidadeQtd() {
         return acessibilidadeQtd;
     }
 
-    public void setAcessibilidadeQtd(BigDecimal acessibilidadeQtd) {
+    public void setAcessibilidadeQtd(Double acessibilidadeQtd) {
         this.acessibilidadeQtd = acessibilidadeQtd;
     }
 
-    public BigDecimal getAcessibilidadeVol() {
+    public Double getAcessibilidadeVol() {
         return acessibilidadeVol;
     }
 
-    public void setAcessibilidadeVol(BigDecimal acessibilidadeVol) {
+    public void setAcessibilidadeVol(Double acessibilidadeVol) {
         this.acessibilidadeVol = acessibilidadeVol;
     }
 
-    public BigDecimal getCreditoAgriculturaEmpres() {
-        return creditoAgriculturaEmpres;
+    public Double getCreditoaAgriculturaEmpres() {
+        return creditoaAgriculturaEmpres;
     }
 
-    public void setCreditoAgriculturaEmpres(BigDecimal creditoAgriculturaEmpres) {
-        this.creditoAgriculturaEmpres = creditoAgriculturaEmpres;
+    public void setCreditoaAgriculturaEmpres(Double creditoaAgriculturaEmpres) {
+        this.creditoaAgriculturaEmpres = creditoaAgriculturaEmpres;
     }
 
-    public BigDecimal getCreditoAgriculturaFamiliar() {
-        return creditoAgriculturaFamiliar;
+    public Double getCreditoaAgriculturaFamiliar() {
+        return creditoaAgriculturaFamiliar;
     }
 
-    public void setCreditoAgriculturaFamiliar(BigDecimal creditoAgriculturaFamiliar) {
-        this.creditoAgriculturaFamiliar = creditoAgriculturaFamiliar;
+    public void setCreditoaAgriculturaFamiliar(Double creditoaAgriculturaFamiliar) {
+        this.creditoaAgriculturaFamiliar = creditoaAgriculturaFamiliar;
     }
 
-    public BigDecimal getCreditoBacenVolume() {
+    public Double getCreditoBacenVolume() {
         return creditoBacenVolume;
     }
 
-    public void setCreditoBacenVolume(BigDecimal creditoBacenVolume) {
+    public void setCreditoBacenVolume(Double creditoBacenVolume) {
         this.creditoBacenVolume = creditoBacenVolume;
     }
 
-    public BigDecimal getCreditoBacenShare() {
+    public Double getCreditoBacenShare() {
         return creditoBacenShare;
     }
 
-    public void setCreditoBacenShare(BigDecimal creditoBacenShare) {
+    public void setCreditoBacenShare(Double creditoBacenShare) {
         this.creditoBacenShare = creditoBacenShare;
     }
 
-    public DadosGoverno getDadosGoverno() {
-        return dadosGoverno;
+    public String getFonte() {
+        return fonte;
     }
 
-    public void setDadosGoverno(DadosGoverno dadosGoverno) {
-        this.dadosGoverno = dadosGoverno;
+    public void setFonte(String fonte) {
+        this.fonte = fonte;
+    }
+
+    public String getDataFonte() {
+        return dataFonte;
+    }
+
+    public void setDataFonte(String dataFonte) {
+        this.dataFonte = dataFonte;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.id);
+        int hash = 0;
+        hash += (codigoIBGE != null ? codigoIBGE.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof BbNoMunicipio)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final BbNoMunicipio other = (BbNoMunicipio) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        BbNoMunicipio other = (BbNoMunicipio) object;
+        if ((this.codigoIBGE == null && other.codigoIBGE != null) || (this.codigoIBGE != null && !this.codigoIBGE.equals(other.codigoIBGE))) {
             return false;
         }
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "br.com.bb.intranet.supermt.governo.superbase.entidades.BbNoMunicipio[ codigoIBGE=" + codigoIBGE + " ]";
+    }
     
 }

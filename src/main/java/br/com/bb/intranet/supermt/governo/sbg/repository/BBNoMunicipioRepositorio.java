@@ -15,6 +15,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.bb.intranet.supermt.governo.sbg.model.BbNoMunicipio;
+import br.com.bb.intranet.supermt.governo.sbg.model.TabelaIdh;
 
 /**
  *
@@ -36,8 +37,10 @@ public class BBNoMunicipioRepositorio implements Serializable {
         return query.getResultList();
     }
 
-    public BbNoMunicipio porId(Long id) {
-        return manager.find(BbNoMunicipio.class, id);
+    public BbNoMunicipio porCodigoIBGE(String codigoIBGE) {
+        Criteria criteria = criarCriteria();
+        criteria.add(Restrictions.eq("codigoIBGE", codigoIBGE));
+        return (BbNoMunicipio) criteria.uniqueResult();
     }
 
     public void adicionar(BbNoMunicipio usuario) {

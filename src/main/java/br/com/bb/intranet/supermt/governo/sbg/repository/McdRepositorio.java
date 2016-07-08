@@ -5,7 +5,7 @@
  */
 package br.com.bb.intranet.supermt.governo.sbg.repository;
 
-import br.com.bb.intranet.supermt.governo.sbg.model.Prefeito;
+import br.com.bb.intranet.supermt.governo.sbg.model.Mcd;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
@@ -13,48 +13,52 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author t1071801
+ * @author Olliver
  */
-public class PrefeitoRepositorio implements Serializable {
+public class McdRepositorio implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private EntityManager manager;
 
     @Inject
-    public PrefeitoRepositorio(EntityManager manager) {
+    public McdRepositorio(EntityManager manager) {
         this.manager = manager;
     }
 
-    public List<Prefeito> todos() {
-        TypedQuery<Prefeito> query = manager.createQuery("from Prefeito", Prefeito.class);
+    public List<Mcd> todos() {
+        TypedQuery<Mcd> query = manager.createQuery("from Mcd", Mcd.class);
         return query.getResultList();
     }
 
-    public Prefeito porId(Long id) {
-        return manager.find(Prefeito.class, id);
+    public List<Mcd> porMCI(String mci) {
+        Criteria criteria = criarCriteria();
+        criteria.add(Restrictions.eq("mci", mci));
+        return criteria.list();
     }
 
-    public void adicionar(Prefeito usuario) {
-        this.manager.persist(usuario);
+    public void adicionar(Mcd valor) {
+        this.manager.persist(valor);
     }
 
-    public void atualizar(Prefeito usuario) {
-        this.manager.merge(usuario);
+    public void atualizar(Mcd valor) {
+        this.manager.merge(valor);
     }
 
     private Criteria criarCriteria() {
         Session session = manager.unwrap(Session.class);
-        Criteria criteria = session.createCriteria(Prefeito.class);
+        Criteria criteria = session.createCriteria(Mcd.class);
 
         return criteria;
     }
 
-    public void remover(Prefeito usuario) {
-        this.manager.remove(usuario);
+    public void remover(Mcd valor) {
+        this.manager.remove(valor);
     }
+
     
 }

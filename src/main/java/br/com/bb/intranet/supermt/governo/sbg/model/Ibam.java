@@ -22,8 +22,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Olliver
  */
 @Entity
-@Table(name = "tabelaifdm2013")
-public class Ifdm implements Serializable {
+@Table(name = "tabelaibam")
+public class Ibam implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -33,25 +33,37 @@ public class Ifdm implements Serializable {
     @Column(name = "CodigoIBGE")
     private String codigoIBGE;
     @Size(max = 255)
-    @Column(name = "Municipio")
+    @Column(name = "municipio")
     private String municipio;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "IFDM")
-    private Double ifdm;
-    @Column(name = "RankingIFDMNacional")
-    private Double rankingIFDMNacional;
-    @Column(name = "RankingIFDMEstadual")
-    private Double rankingIFDMEstadual;
-    @Size(max = 50)
+    @Column(name = "numeroVereadores")
+    private Double numeroVereadores;
+    @Size(max = 255)
+    @Column(name = "dataAniversario")
+    private String dataAniversario;
+    @Size(max = 255)
+    @Column(name = "Prefeito_2012")
+    private String prefeito2012;
+    @Size(max = 255)
+    @Column(name = "Prefeito_2008")
+    private String prefeito2008;
+    @Size(max = 255)
+    @Column(name = "Prefeito_2004")
+    private String prefeito2004;
+    @Size(max = 255)
+    @Column(name = "Prefeito_2000")
+    private String prefeito2000;
+    @Size(max = 255)
     @Column(name = "Fonte")
     private String fonte;
+    @Size(max = 255)
     @Column(name = "DataFonte")
-    private Integer dataFonte;
+    private String dataFonte;
 
-    public Ifdm() {
+    public Ibam() {
     }
 
-    public Ifdm(String codigoIBGE) {
+    public Ibam(String codigoIBGE) {
         this.codigoIBGE = codigoIBGE;
     }
 
@@ -71,28 +83,52 @@ public class Ifdm implements Serializable {
         this.municipio = municipio;
     }
 
-    public Double getIfdm() {
-        return ifdm;
+    public Double getNumeroVereadores() {
+        return numeroVereadores;
     }
 
-    public void setIfdm(Double ifdm) {
-        this.ifdm = ifdm;
+    public void setNumeroVereadores(Double numeroVereadores) {
+        this.numeroVereadores = numeroVereadores;
     }
 
-    public Double getRankingIFDMNacional() {
-        return rankingIFDMNacional;
+    public String getDataAniversario() {
+        return dataAniversario;
     }
 
-    public void setRankingIFDMNacional(Double rankingIFDMNacional) {
-        this.rankingIFDMNacional = rankingIFDMNacional;
+    public void setDataAniversario(String dataAniversario) {
+        this.dataAniversario = dataAniversario;
     }
 
-    public Double getRankingIFDMEstadual() {
-        return rankingIFDMEstadual;
+    public String getPrefeito2012() {
+        return prefeito2012;
     }
 
-    public void setRankingIFDMEstadual(Double rankingIFDMEstadual) {
-        this.rankingIFDMEstadual = rankingIFDMEstadual;
+    public void setPrefeito2012(String prefeito2012) {
+        this.prefeito2012 = prefeito2012;
+    }
+
+    public String getPrefeito2008() {
+        return prefeito2008;
+    }
+
+    public void setPrefeito2008(String prefeito2008) {
+        this.prefeito2008 = prefeito2008;
+    }
+
+    public String getPrefeito2004() {
+        return prefeito2004;
+    }
+
+    public void setPrefeito2004(String prefeito2004) {
+        this.prefeito2004 = prefeito2004;
+    }
+
+    public String getPrefeito2000() {
+        return prefeito2000;
+    }
+
+    public void setPrefeito2000(String prefeito2000) {
+        this.prefeito2000 = prefeito2000;
     }
 
     public String getFonte() {
@@ -103,11 +139,11 @@ public class Ifdm implements Serializable {
         this.fonte = fonte;
     }
 
-    public Integer getDataFonte() {
+    public String getDataFonte() {
         return dataFonte;
     }
 
-    public void setDataFonte(Integer dataFonte) {
+    public void setDataFonte(String dataFonte) {
         this.dataFonte = dataFonte;
     }
 
@@ -121,10 +157,10 @@ public class Ifdm implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Ifdm)) {
+        if (!(object instanceof Ibam)) {
             return false;
         }
-        Ifdm other = (Ifdm) object;
+        Ibam other = (Ibam) object;
         if ((this.codigoIBGE == null && other.codigoIBGE != null) || (this.codigoIBGE != null && !this.codigoIBGE.equals(other.codigoIBGE))) {
             return false;
         }
@@ -133,7 +169,7 @@ public class Ifdm implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.bb.intranet.supermt.governo.superbase.entidades.Tabelaifdm2013[ codigoIBGE=" + codigoIBGE + " ]";
+        return "br.com.bb.intranet.supermt.governo.superbase.entidades.Tabelaibam[ codigoIBGE=" + codigoIBGE + " ]";
     }
     
 }

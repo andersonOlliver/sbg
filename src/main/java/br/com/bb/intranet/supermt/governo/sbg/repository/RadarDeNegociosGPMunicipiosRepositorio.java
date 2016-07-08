@@ -6,6 +6,7 @@
 package br.com.bb.intranet.supermt.governo.sbg.repository;
 
 import br.com.bb.intranet.supermt.governo.sbg.model.RadarDeNegociosGPMunicipios;
+import br.com.bb.intranet.supermt.governo.sbg.model.TabelaIdh;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
@@ -13,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -34,8 +36,10 @@ public class RadarDeNegociosGPMunicipiosRepositorio implements Serializable {
         return query.getResultList();
     }
 
-    public RadarDeNegociosGPMunicipios porId(Long id) {
-        return manager.find(RadarDeNegociosGPMunicipios.class, id);
+    public RadarDeNegociosGPMunicipios porCodigoIBGE(String codigoIBGE) {
+        Criteria criteria = criarCriteria();
+        criteria.add(Restrictions.eq("codigoIBGE", codigoIBGE));
+        return (RadarDeNegociosGPMunicipios) criteria.uniqueResult();
     }
 
     public void adicionar(RadarDeNegociosGPMunicipios usuario) {
@@ -56,5 +60,5 @@ public class RadarDeNegociosGPMunicipiosRepositorio implements Serializable {
     public void remover(RadarDeNegociosGPMunicipios usuario) {
         this.manager.remove(usuario);
     }
-    
+
 }

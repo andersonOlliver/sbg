@@ -5,7 +5,7 @@
  */
 package br.com.bb.intranet.supermt.governo.sbg.repository;
 
-import br.com.bb.intranet.supermt.governo.sbg.model.TabelaIdh;
+import br.com.bb.intranet.supermt.governo.sbg.model.PosseDeProdutosAbril2016;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
@@ -19,45 +19,45 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author t1071801
  */
-public class TabelaIdhRepositorio implements Serializable {
+public class PosseDeProdutosAbril2016Repositorio implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private EntityManager manager;
 
     @Inject
-    public TabelaIdhRepositorio(EntityManager manager) {
+    public PosseDeProdutosAbril2016Repositorio(EntityManager manager) {
         this.manager = manager;
     }
 
-    public List<TabelaIdh> todos() {
-        TypedQuery<TabelaIdh> query = manager.createQuery("from TabelaIdh", TabelaIdh.class);
+    public List<PosseDeProdutosAbril2016> todos() {
+        TypedQuery<PosseDeProdutosAbril2016> query = manager.createQuery("from PosseDeProdutosAbril2016", PosseDeProdutosAbril2016.class);
         return query.getResultList();
     }
 
-    public TabelaIdh porCodigoIBGE(String codigoIBGE) {
+    public PosseDeProdutosAbril2016 porCodigoIBGE(String codigoIBGE) {
         Criteria criteria = criarCriteria();
-        criteria.add(Restrictions.eq("codigoIBGE", codigoIBGE));
+                criteria.add(Restrictions.eq("codigoIBGE", codigoIBGE));
 
-        return (TabelaIdh) criteria.uniqueResult();
+        return (PosseDeProdutosAbril2016) criteria.uniqueResult();
     }
 
-    public void adicionar(TabelaIdh usuario) {
+    public void adicionar(PosseDeProdutosAbril2016 usuario) {
         this.manager.persist(usuario);
     }
 
-    public void atualizar(TabelaIdh usuario) {
+    public void atualizar(PosseDeProdutosAbril2016 usuario) {
         this.manager.merge(usuario);
     }
 
     private Criteria criarCriteria() {
         Session session = manager.unwrap(Session.class);
-        Criteria criteria = session.createCriteria(TabelaIdh.class);
+        Criteria criteria = session.createCriteria(PosseDeProdutosAbril2016.class);
 
         return criteria;
     }
 
-    public void remover(TabelaIdh usuario) {
+    public void remover(PosseDeProdutosAbril2016 usuario) {
         this.manager.remove(usuario);
     }
     

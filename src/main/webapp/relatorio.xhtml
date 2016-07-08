@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+
+    <f:metadata>
+        <f:viewParam name="codigo-ibge" value="#{relatorioBean.codigoIBGE}" />
+        <f:viewAction action="#{relatorioBean.buscar}" />
+    </f:metadata>
+
+    <ui:define name="titulo">SBG - Governo</ui:define>
+
+    <ui:define name="corpo">
+
+        <!--<h1>SBG - Governo</h1>-->
+
+        <h:form id="frm" style="width: 80%; margin-left: 10%">
+            <p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+            <!--TODOS OS CODIGOS AQUI!-->
+            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4, ui-grid-col-2,ui-grid-col-4" layout="grid">
+                <f:facet name="header">
+                    <h1>#{relatorioBean.relatorio.dadosGoverno.nome}</h1>
+                </f:facet>
+                <h:outputText value="Codigo IBGE" />
+                <h:outputText value="#{relatorioBean.relatorio.dadosGoverno.codigoIBGE}" />
+                
+                
+                <h:outputText value="CNPJ" />
+                <h:outputText value="#{relatorioBean.relatorio.dadosGoverno.cnpj}" />
+                
+                <h:outputText value="MCI" />
+                <h:outputText value="#{relatorioBean.relatorio.dadosGoverno.mci}" />
+                
+                <h:outputText value="Agencia Relacionamento" />
+                <h:outputText value="#{relatorioBean.relatorio.dadosGoverno.agenciaRelacionamento}" />
+                
+                <h:outputText value="Prefixo" />
+                <h:outputText value="#{relatorioBean.relatorio.dadosGoverno.prefixo}" />
+                
+                <h:outputText value="Regional" />
+                <h:outputText value="#{relatorioBean.relatorio.dadosGoverno.gerev}" />
+
+            </p:panelGrid>
+            
+            <p:panel header="cabeçalho" menuTitle="menu_titulo">
+                <h:outputText value="#{relatorioBean.relatorio.listaMcd}" />
+            </p:panel>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

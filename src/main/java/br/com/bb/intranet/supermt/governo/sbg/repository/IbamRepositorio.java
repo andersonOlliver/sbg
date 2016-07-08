@@ -5,7 +5,7 @@
  */
 package br.com.bb.intranet.supermt.governo.sbg.repository;
 
-import br.com.bb.intranet.supermt.governo.sbg.model.DadosGoverno;
+import br.com.bb.intranet.supermt.governo.sbg.model.Ibam;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
@@ -17,49 +17,48 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author t1071801
+ * @author Olliver
  */
-public class DadosGovernoRepositorio implements Serializable {
+public class IbamRepositorio implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private EntityManager manager;
 
     @Inject
-    public DadosGovernoRepositorio(EntityManager manager) {
+    public IbamRepositorio(EntityManager manager) {
         this.manager = manager;
     }
 
-    public List<DadosGoverno> todos() {
-        TypedQuery<DadosGoverno> query = manager.createQuery("from DadosGoverno", DadosGoverno.class);
+    public List<Ibam> todos() {
+        TypedQuery<Ibam> query = manager.createQuery("from Ibam", Ibam.class);
         return query.getResultList();
     }
 
-    public DadosGoverno porCodigoIBGE(String codigoIBGE){
+    public Ibam porCodigoIBGE(String codigoIBGE) {
         Criteria criteria = criarCriteria();
-        
         criteria.add(Restrictions.eq("codigoIBGE", codigoIBGE));
-        
-        return (DadosGoverno) criteria.uniqueResult();
+        return (Ibam) criteria.uniqueResult();
     }
 
-    public void adicionar(DadosGoverno valor) {
+    public void adicionar(Ibam valor) {
         this.manager.persist(valor);
     }
 
-    public void atualizar(DadosGoverno valor) {
+    public void atualizar(Ibam valor) {
         this.manager.merge(valor);
     }
 
     private Criteria criarCriteria() {
         Session session = manager.unwrap(Session.class);
-        Criteria criteria = session.createCriteria(DadosGoverno.class);
+        Criteria criteria = session.createCriteria(Ibam.class);
 
         return criteria;
     }
 
-    public void remover(DadosGoverno valor) {
+    public void remover(Ibam valor) {
         this.manager.remove(valor);
     }
+
     
 }

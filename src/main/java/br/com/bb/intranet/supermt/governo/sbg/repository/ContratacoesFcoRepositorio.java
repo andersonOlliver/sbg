@@ -5,7 +5,7 @@
  */
 package br.com.bb.intranet.supermt.governo.sbg.repository;
 
-import br.com.bb.intranet.supermt.governo.sbg.model.ContratacoesFco;
+import br.com.bb.intranet.supermt.governo.sbg.model.ContratacoesFCO;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -29,32 +30,35 @@ public class ContratacoesFcoRepositorio implements Serializable {
         this.manager = manager;
     }
 
-    public List<ContratacoesFco> todos() {
-        TypedQuery<ContratacoesFco> query = manager.createQuery("from ContratacoesFco", ContratacoesFco.class);
+    public List<ContratacoesFCO> todos() {
+        TypedQuery<ContratacoesFCO> query = manager.createQuery("from ContratacoesFCO", ContratacoesFCO.class);
         return query.getResultList();
     }
 
-    public ContratacoesFco porId(Long id) {
-        return manager.find(ContratacoesFco.class, id);
+    public ContratacoesFCO porCodigoIBGE(String codigoIBGE) {
+        Criteria criteria = criarCriteria();
+        criteria.add(Restrictions.eq("codigoIBGE", codigoIBGE));
+
+        return (ContratacoesFCO) criteria.uniqueResult();
     }
 
-    public void adicionar(ContratacoesFco usuario) {
-        this.manager.persist(usuario);
+    public void adicionar(ContratacoesFCO valor) {
+        this.manager.persist(valor);
     }
 
-    public void atualizar(ContratacoesFco usuario) {
-        this.manager.merge(usuario);
+    public void atualizar(ContratacoesFCO valor) {
+        this.manager.merge(valor);
     }
 
     private Criteria criarCriteria() {
         Session session = manager.unwrap(Session.class);
-        Criteria criteria = session.createCriteria(ContratacoesFco.class);
+        Criteria criteria = session.createCriteria(ContratacoesFCO.class);
 
         return criteria;
     }
 
-    public void remover(ContratacoesFco usuario) {
-        this.manager.remove(usuario);
+    public void remover(ContratacoesFCO valor) {
+        this.manager.remove(valor);
     }
-    
+
 }

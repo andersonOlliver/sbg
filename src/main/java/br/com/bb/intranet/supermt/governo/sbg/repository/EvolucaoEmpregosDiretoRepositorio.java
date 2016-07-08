@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -34,8 +35,10 @@ public class EvolucaoEmpregosDiretoRepositorio implements Serializable {
         return query.getResultList();
     }
 
-    public EvolucaoEmpregosDireto porId(Long id) {
-        return manager.find(EvolucaoEmpregosDireto.class, id);
+    public EvolucaoEmpregosDireto porCodigoIBGE(String codigoIBGE){
+        Criteria criteria = criarCriteria();
+                criteria.add(Restrictions.eq("codigoIBGE", codigoIBGE));
+        return (EvolucaoEmpregosDireto) criteria.uniqueResult();
     }
 
     public void adicionar(EvolucaoEmpregosDireto usuario) {

@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -34,10 +35,14 @@ public class PibRepositorio implements Serializable {
         return query.getResultList();
     }
 
-    public Pib porId(Long id) {
-        return manager.find(Pib.class, id);
+    public Pib porCodigoIBGE(String codigoIBGE) {
+        Criteria criteria = criarCriteria();
+                criteria.add(Restrictions.eq("codigoIBGE", codigoIBGE));
+
+        return (Pib) criteria.uniqueResult();
     }
 
+    
     public void adicionar(Pib usuario) {
         this.manager.persist(usuario);
     }

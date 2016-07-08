@@ -1,107 +1,140 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.bb.intranet.supermt.governo.sbg.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Objects;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Olliver
- *
  */
 @Entity
-@Table
+@Table(name = "tabelarpps")
 public class Rpps implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @Id
-    @GeneratedValue
-    private Long id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "CodigoIBGE")
+    private String codigoIBGE;
+    @Size(max = 255)
+    @Column(name = "Municipio")
+    private String municipio;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "PLMPS")
+    private Double plmps;
+    @Column(name = "PLBB")
+    private Double plbb;
+    @Column(name = "Share")
+    private Double share;
+    @Size(max = 50)
+    @Column(name = "Fonte")
+    private String fonte;
+    @Size(max = 50)
+    @Column(name = "DataFonte")
+    private String dataFonte;
 
-    @Column(name = "PL_MPS", precision = 20, scale = 2)
-    private BigDecimal plMps;
-
-    @Column(name = "PL_BB", precision = 20, scale = 2)
-    private BigDecimal plBb;
-
-    @Column(name = "Share", precision = 20, scale = 2)
-    private BigDecimal share;
-
-    @ManyToOne
-    @JoinColumn(name = "dados_governo")
-    private DadosGoverno dadosGoverno;
-
-    public Long getId() {
-        return id;
+    public Rpps() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Rpps(String codigoIBGE) {
+        this.codigoIBGE = codigoIBGE;
     }
 
-    public BigDecimal getPlMps() {
-        return plMps;
+    public String getCodigoIBGE() {
+        return codigoIBGE;
     }
 
-    public void setPlMps(BigDecimal plMps) {
-        this.plMps = plMps;
+    public void setCodigoIBGE(String codigoIBGE) {
+        this.codigoIBGE = codigoIBGE;
     }
 
-    public BigDecimal getPlBb() {
-        return plBb;
+    public String getMunicipio() {
+        return municipio;
     }
 
-    public void setPlBb(BigDecimal plBb) {
-        this.plBb = plBb;
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
     }
 
-    public BigDecimal getShare() {
+    public Double getPlmps() {
+        return plmps;
+    }
+
+    public void setPlmps(Double plmps) {
+        this.plmps = plmps;
+    }
+
+    public Double getPlbb() {
+        return plbb;
+    }
+
+    public void setPlbb(Double plbb) {
+        this.plbb = plbb;
+    }
+
+    public Double getShare() {
         return share;
     }
 
-    public void setShare(BigDecimal share) {
+    public void setShare(Double share) {
         this.share = share;
     }
 
-    public DadosGoverno getDadosGoverno() {
-        return dadosGoverno;
+    public String getFonte() {
+        return fonte;
     }
 
-    public void setDadosGoverno(DadosGoverno dadosGoverno) {
-        this.dadosGoverno = dadosGoverno;
+    public void setFonte(String fonte) {
+        this.fonte = fonte;
+    }
+
+    public String getDataFonte() {
+        return dataFonte;
+    }
+
+    public void setDataFonte(String dataFonte) {
+        this.dataFonte = dataFonte;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.id);
+        int hash = 0;
+        hash += (codigoIBGE != null ? codigoIBGE.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Rpps)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Rpps other = (Rpps) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        Rpps other = (Rpps) object;
+        if ((this.codigoIBGE == null && other.codigoIBGE != null) || (this.codigoIBGE != null && !this.codigoIBGE.equals(other.codigoIBGE))) {
             return false;
         }
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "br.com.bb.intranet.supermt.governo.superbase.entidades.Tabelarpps[ codigoIBGE=" + codigoIBGE + " ]";
+    }
+    
 }

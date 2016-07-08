@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -34,8 +35,10 @@ public class PosseDeProdutosRepositorio implements Serializable {
         return query.getResultList();
     }
 
-    public PosseDeProdutos porId(Long id) {
-        return manager.find(PosseDeProdutos.class, id);
+    public PosseDeProdutos porCodigoIBGE(String codigoIBGE) {
+        Criteria criteria = criarCriteria();
+        criteria.add(Restrictions.eq("ibge", codigoIBGE));
+        return (PosseDeProdutos) criteria.uniqueResult();
     }
 
     public void adicionar(PosseDeProdutos usuario) {

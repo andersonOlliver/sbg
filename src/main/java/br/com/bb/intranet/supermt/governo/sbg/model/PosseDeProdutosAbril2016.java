@@ -11,43 +11,63 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Olliver
  */
 @Entity
-@Table(name = "tabelaposseprodutos")
-public class PosseDeProdutos implements Serializable {
+@Table(name = "tabelapossedeprodutosabril2016")
+public class PosseDeProdutosAbril2016 implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "IBGE")
-    private String ibge;
+    @Column(name = "CodigoIBGE")
+    private String codigoIBGE;
     @Size(max = 255)
-    @Column(name = "MCI")
-    private String mci;
+    @Column(name = "Municipio")
+    private String municipio;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "MCI")
+    private Double mci;
+    @Size(max = 255)
+    @Column(name = "CNPJ")
+    private String cnpj;
     @Column(name = "Porte")
     private Double porte;
     @Size(max = 255)
     @Column(name = "Classificacao")
     private String classificacao;
     @Size(max = 255)
+    @Column(name = "ROA")
+    private String roa;
+    @Column(name = "FUNDEB")
+    private Double fundeb;
+    @Column(name = "FPM")
+    private Double fpm;
+    @Column(name = "Municipes")
+    private Double municipes;
+    @Column(name = "Servidores")
+    private Double servidores;
+    @Size(max = 255)
     @Column(name = "AASP")
     private String aasp;
     @Column(name = "Aplicacoes")
     private Double aplicacoes;
+    @Size(max = 255)
     @Column(name = "Responsabilidades")
-    private Double responsabilidades;
+    private String responsabilidades;
     @Size(max = 255)
     @Column(name = "REC")
     private String rec;
@@ -73,8 +93,8 @@ public class PosseDeProdutos implements Serializable {
     @Column(name = "Contracheque")
     private String contracheque;
     @Size(max = 255)
-    @Column(name = "Licitacoes")
-    private String licitacoes;
+    @Column(name = "LicitacoesE")
+    private String licitacoesE;
     @Size(max = 255)
     @Column(name = "Recad")
     private String recad;
@@ -82,65 +102,87 @@ public class PosseDeProdutos implements Serializable {
     @Column(name = "Fopag_no_BB")
     private String fopagnoBB;
     @Size(max = 255)
-    @Column(name = "PasepFopag")
+    @Column(name = "Pasep_Fopag")
     private String pasepFopag;
     @Size(max = 255)
     @Column(name = "RPPS")
     private String rpps;
     @Size(max = 255)
-    @Column(name = "BBCredito_Salario")
+    @Column(name = "BBCreditoSalario")
     private String bBCreditoSalario;
     @Size(max = 255)
-    @Column(name = "BBCredito_Consignacao")
+    @Column(name = "BBCreditoConsignacao")
     private String bBCreditoConsignacao;
     @Size(max = 255)
-    @Column(name = "BBCredito_13Sal")
+    @Column(name = "BBCredito13Sal")
     private String bBCredito13Sal;
     @Size(max = 255)
-    @Column(name = "LimiteCredito")
-    private String limiteCredito;
-    @Column(name = "Limite_Estabelecido")
-    private Double limiteEstabelecido;
+    @Column(name = "LimitedeCredito")
+    private String limitedeCredito;
+    @Size(max = 255)
+    @Column(name = "LimiteEstabelecido")
+    private String limiteEstabelecido;
     @Column(name = "Vencto")
     @Temporal(TemporalType.TIMESTAMP)
     private Date vencto;
     @Size(max = 255)
-    @Column(name = "Risco_Atribuido")
+    @Column(name = "RiscoAtribuido")
     private String riscoAtribuido;
+    @Column(name = "MCD")
+    private Double mcd;
+    @Size(max = 255)
+    @Column(name = "MCR")
+    private String mcr;
+    @Column(name = "MC_Fundos")
+    private Double mCFundos;
+    @Column(name = "Mes")
+    private Double mes;
+    @Column(name = "Ano")
+    private Double ano;
     @Size(max = 255)
     @Column(name = "Carteira")
     private String carteira;
     @Size(max = 255)
     @Column(name = "Gecon")
     private String gecon;
-    @Size(max = 50)
-    @Column(name = "Fonte")
-    private String fonte;
-    @Size(max = 50)
-    @Column(name = "DataFonte")
-    private String dataFonte;
 
-    public PosseDeProdutos() {
+    public PosseDeProdutosAbril2016() {
     }
 
-    public PosseDeProdutos(String ibge) {
-        this.ibge = ibge;
+    public PosseDeProdutosAbril2016(String codigoIBGE) {
+        this.codigoIBGE = codigoIBGE;
     }
 
-    public String getIbge() {
-        return ibge;
+    public String getCodigoIBGE() {
+        return codigoIBGE;
     }
 
-    public void setIbge(String ibge) {
-        this.ibge = ibge;
+    public void setCodigoIBGE(String codigoIBGE) {
+        this.codigoIBGE = codigoIBGE;
     }
 
-    public String getMci() {
+    public String getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
+    }
+
+    public Double getMci() {
         return mci;
     }
 
-    public void setMci(String mci) {
+    public void setMci(Double mci) {
         this.mci = mci;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public Double getPorte() {
@@ -159,6 +201,46 @@ public class PosseDeProdutos implements Serializable {
         this.classificacao = classificacao;
     }
 
+    public String getRoa() {
+        return roa;
+    }
+
+    public void setRoa(String roa) {
+        this.roa = roa;
+    }
+
+    public Double getFundeb() {
+        return fundeb;
+    }
+
+    public void setFundeb(Double fundeb) {
+        this.fundeb = fundeb;
+    }
+
+    public Double getFpm() {
+        return fpm;
+    }
+
+    public void setFpm(Double fpm) {
+        this.fpm = fpm;
+    }
+
+    public Double getMunicipes() {
+        return municipes;
+    }
+
+    public void setMunicipes(Double municipes) {
+        this.municipes = municipes;
+    }
+
+    public Double getServidores() {
+        return servidores;
+    }
+
+    public void setServidores(Double servidores) {
+        this.servidores = servidores;
+    }
+
     public String getAasp() {
         return aasp;
     }
@@ -175,11 +257,11 @@ public class PosseDeProdutos implements Serializable {
         this.aplicacoes = aplicacoes;
     }
 
-    public Double getResponsabilidades() {
+    public String getResponsabilidades() {
         return responsabilidades;
     }
 
-    public void setResponsabilidades(Double responsabilidades) {
+    public void setResponsabilidades(String responsabilidades) {
         this.responsabilidades = responsabilidades;
     }
 
@@ -247,12 +329,12 @@ public class PosseDeProdutos implements Serializable {
         this.contracheque = contracheque;
     }
 
-    public String getLicitacoes() {
-        return licitacoes;
+    public String getLicitacoesE() {
+        return licitacoesE;
     }
 
-    public void setLicitacoes(String licitacoes) {
-        this.licitacoes = licitacoes;
+    public void setLicitacoesE(String licitacoesE) {
+        this.licitacoesE = licitacoesE;
     }
 
     public String getRecad() {
@@ -311,19 +393,19 @@ public class PosseDeProdutos implements Serializable {
         this.bBCredito13Sal = bBCredito13Sal;
     }
 
-    public String getLimiteCredito() {
-        return limiteCredito;
+    public String getLimitedeCredito() {
+        return limitedeCredito;
     }
 
-    public void setLimiteCredito(String limiteCredito) {
-        this.limiteCredito = limiteCredito;
+    public void setLimitedeCredito(String limitedeCredito) {
+        this.limitedeCredito = limitedeCredito;
     }
 
-    public Double getLimiteEstabelecido() {
+    public String getLimiteEstabelecido() {
         return limiteEstabelecido;
     }
 
-    public void setLimiteEstabelecido(Double limiteEstabelecido) {
+    public void setLimiteEstabelecido(String limiteEstabelecido) {
         this.limiteEstabelecido = limiteEstabelecido;
     }
 
@@ -343,6 +425,46 @@ public class PosseDeProdutos implements Serializable {
         this.riscoAtribuido = riscoAtribuido;
     }
 
+    public Double getMcd() {
+        return mcd;
+    }
+
+    public void setMcd(Double mcd) {
+        this.mcd = mcd;
+    }
+
+    public String getMcr() {
+        return mcr;
+    }
+
+    public void setMcr(String mcr) {
+        this.mcr = mcr;
+    }
+
+    public Double getMCFundos() {
+        return mCFundos;
+    }
+
+    public void setMCFundos(Double mCFundos) {
+        this.mCFundos = mCFundos;
+    }
+
+    public Double getMes() {
+        return mes;
+    }
+
+    public void setMes(Double mes) {
+        this.mes = mes;
+    }
+
+    public Double getAno() {
+        return ano;
+    }
+
+    public void setAno(Double ano) {
+        this.ano = ano;
+    }
+
     public String getCarteira() {
         return carteira;
     }
@@ -359,37 +481,21 @@ public class PosseDeProdutos implements Serializable {
         this.gecon = gecon;
     }
 
-    public String getFonte() {
-        return fonte;
-    }
-
-    public void setFonte(String fonte) {
-        this.fonte = fonte;
-    }
-
-    public String getDataFonte() {
-        return dataFonte;
-    }
-
-    public void setDataFonte(String dataFonte) {
-        this.dataFonte = dataFonte;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (ibge != null ? ibge.hashCode() : 0);
+        hash += (codigoIBGE != null ? codigoIBGE.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PosseDeProdutos)) {
+        if (!(object instanceof PosseDeProdutosAbril2016)) {
             return false;
         }
-        PosseDeProdutos other = (PosseDeProdutos) object;
-        if ((this.ibge == null && other.ibge != null) || (this.ibge != null && !this.ibge.equals(other.ibge))) {
+        PosseDeProdutosAbril2016 other = (PosseDeProdutosAbril2016) object;
+        if ((this.codigoIBGE == null && other.codigoIBGE != null) || (this.codigoIBGE != null && !this.codigoIBGE.equals(other.codigoIBGE))) {
             return false;
         }
         return true;
@@ -397,7 +503,7 @@ public class PosseDeProdutos implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.bb.intranet.supermt.governo.superbase.entidades.Tabelaposseprodutos[ ibge=" + ibge + " ]";
+        return "br.com.bb.intranet.supermt.governo.superbase.entidades.Tabelapossedeprodutosabril2016[ codigoIBGE=" + codigoIBGE + " ]";
     }
     
 }

@@ -6,6 +6,7 @@
 package br.com.bb.intranet.supermt.governo.sbg.repository;
 
 import br.com.bb.intranet.supermt.governo.sbg.model.Rpps;
+import br.com.bb.intranet.supermt.governo.sbg.model.TabelaIdh;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
@@ -13,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -34,8 +36,10 @@ public class RppsRepositorio implements Serializable {
         return query.getResultList();
     }
 
-    public Rpps porId(Long id) {
-        return manager.find(Rpps.class, id);
+    public Rpps porCodigoIBGE(String codigoIBGE) {
+        Criteria criteria = criarCriteria();
+        criteria.add(Restrictions.eq("codigoIBGE", codigoIBGE));
+        return (Rpps) criteria.uniqueResult();
     }
 
     public void adicionar(Rpps usuario) {
